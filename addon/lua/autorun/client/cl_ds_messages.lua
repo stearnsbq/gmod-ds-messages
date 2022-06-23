@@ -1,3 +1,2 @@
-include("autorun/sh_ds_messages.lua")
+-- include("autorun/sh_ds_messages.lua")
 
-print("dome")
