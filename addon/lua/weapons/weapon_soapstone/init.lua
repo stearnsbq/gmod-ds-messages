@@ -22,13 +22,14 @@ function SWEP:PrimaryAttack()
 
 
     messageEnt:SetPos(tr.HitPos)
-
     local playerAngles = self.Owner:GetAngles();
 
-    playerAngles.pitch = 0
-    playerAngles.roll = 0
+    local angle = tr.HitNormal:Angle()
+	angle:RotateAroundAxis(tr.HitNormal:Angle():Right(), -90)
+	angle:RotateAroundAxis(tr.HitNormal:Angle():Forward(), 90)
 
-    messageEnt:SetAngles(playerAngles)
+
+    messageEnt:SetAngles(angle)
 
     messageEnt:SetMessage("gay")
     messageEnt:SetAppraisals(1)
@@ -37,23 +38,6 @@ function SWEP:PrimaryAttack()
 
 
 
-    local surfaces = game.GetWorld():GetBrushSurfaces()
-
-
-    local closest = nil
-    local closestDistance = 99999999
-    local angle = nil
-    for k, v in pairs(surfaces) do
-
-        for key, val in pairs(v:GetVertices()) do
-
-            print(val)
-        end
-
-        
-
-
-    end
 
    -- messageEnt:SetPos(closest)
 

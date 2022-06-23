@@ -28,11 +28,20 @@ end
 
 
 function ENT:AcceptInput(name, caller, activator)  
-    
+    print(name)
 	if name == "Use" and caller:IsPlayer() then
 		net.Start("onOpenMessage") 
         net.WriteString(self:GetMessage())
         net.WriteInt(self:GetAppraisals(), 32)
         net.Send(caller)
 	end
+end
+
+function ENT:StartTouch(caller)
+
+    net.Start("onOpenMessage") 
+    net.WriteString(self:GetMessage())
+    net.WriteInt(self:GetAppraisals(), 32)
+    net.Send(caller)
+
 end
