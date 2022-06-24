@@ -4,6 +4,9 @@ AddCSLuaFile("shared.lua")
 include("shared.lua")
 
 util.AddNetworkString("onOpenMessage")
+util.AddNetworkString("onCloseMessage")
+
+
 
 function ENT:SetupDataTables()
     self:NetworkVar("String", 0, "Message")
@@ -12,8 +15,9 @@ end
 
 
 function ENT:Initialize()
-
-    self:SetModel("models/props_c17/FurnitureShelf001b.mdl")
+    print(messageMaterial)
+    self:SetModel("models/hunter/plates/plate1x1.mdl")
+    self:SetMaterial("message/dark_souls_message")
     self:PhysicsInit(SOLID_VPHYSICS)
     self:SetMoveType(MOVETYPE_NOCLIP)
     self:SetSolid(SOLID_VPHYSICS)
@@ -39,9 +43,26 @@ end
 
 function ENT:StartTouch(caller)
 
-    net.Start("onOpenMessage") 
-    net.WriteString(self:GetMessage())
-    net.WriteInt(self:GetAppraisals(), 32)
-    net.Send(caller)
+    if caller:IsPlayer() then
+
+        net.Start("onOpenMessage") 
+        net.WriteString(self:GetMessage())
+        net.WriteInt(self:GetAppraisals(), 32)
+        net.Send(caller)
+
+    end
+
+
+
+end
+
+
+function ENT:EndTouch(caller)
+
+    if caller:IsPlayer() then
+        net.Start("onCloseMessage")
+        net.Send(caller)
+    end
+
 
 end

@@ -19,14 +19,14 @@ function SWEP:PrimaryAttack()
     })  
 
     
+    messageEnt:SetPos(tr.HitPos - Vector(0, 0, 1.49))
 
-
-    messageEnt:SetPos(tr.HitPos)
     local playerAngles = self.Owner:GetAngles();
 
     local angle = tr.HitNormal:Angle()
-	angle:RotateAroundAxis(tr.HitNormal:Angle():Right(), -90)
-	angle:RotateAroundAxis(tr.HitNormal:Angle():Forward(), 90)
+
+	  angle:RotateAroundAxis(tr.HitNormal:Angle():Right(), -90)
+	  angle:RotateAroundAxis(tr.HitNormal:Angle():Forward(), 90)
 
 
     messageEnt:SetAngles(angle)

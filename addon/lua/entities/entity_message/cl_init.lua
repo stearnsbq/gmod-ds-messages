@@ -1,5 +1,8 @@
 include("shared.lua")
 
+
+local messageGUI = nil
+
 function ENT:Draw()
 
     self:DrawModel()
@@ -13,16 +16,19 @@ net.Receive("onOpenMessage", function ()
     local msg = net.ReadString()
     local appraisals = net.ReadInt(32)
 
-	-- Small derma panel just for the example.
-	local pShop = vgui.Create('DFrame')
-	pShop:SetSize(334, 63)
-	pShop:SetPos(ScrW()*0.5, ScrH()*0.5)
-	pShop:SetTitle('Rock & Gravel shop')
-	pShop:SetSizable(true)
-	pShop:SetDeleteOnClose(false)
-	pShop:MakePopup()
 
-	-- We can also do anything else the client can do, like using the chat!
-	chat.AddText(Color(255,255,128), "Message: ",Color(255,255,255), msg )
+	messageGUI = vgui.Create('messageGUI')
+	messageGUI:SetSize(400, 250)
+	messageGUI:Center()
+	messageGUI:MakePopup()
+
+end)
+
+
+net.Receive("onCloseMessage", function ()
+
+	if messageGUI:IsValid()  then
+		messageGUI:Close()
+	end
 
 end)

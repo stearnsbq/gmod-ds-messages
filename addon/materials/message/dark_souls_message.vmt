@@ -1,0 +1,8 @@
+"UnlitGeneric"
+{
+	"$basetexture" "message/dark_souls_message"
+                "$translucent" 1
+                "$noclamp" "0"
+                "$alphatest" "0"
+
+}
