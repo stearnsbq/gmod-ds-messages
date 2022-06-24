@@ -2,7 +2,6 @@ local PANEL = {}
 
 function PANEL:Init()
 
-
     self.messageControls = self:Add("Panel")
     self.messageControls:Dock(BOTTOM)
     self.messageControls:SetWidth(25)
@@ -36,9 +35,8 @@ end
 function PANEL:Paint(w, h)
 
     local aX, aY = self:LocalToScreen()
-    
-
-    surface.SetMaterial("materials/message/message.png")
+    surface.SetMaterial(Material("phoenix_storms/gear"))
+    draw.RoundedBoxEx(6, 0, 0, w, h, Color(255, 255, 255), true, true, false, false)
 
 end
 

@@ -22,6 +22,9 @@ net.Receive("onOpenMessage", function ()
 	messageGUI:Center()
 	messageGUI:MakePopup()
 
+	
+	messageGUI.messageLabel:SetText(msg)
+
 end)
 
 

@@ -31,9 +31,6 @@ function ENT:Initialize()
     net.Broadcast()
 
 
-    -- self:SetMessage("Default Message")
-    -- self:SetAppraisals(0)
-
 end
 
 
