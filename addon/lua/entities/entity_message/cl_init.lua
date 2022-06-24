@@ -18,7 +18,7 @@ net.Receive("onOpenMessage", function ()
 
 
 	messageGUI = vgui.Create('messageGUI')
-	messageGUI:SetSize(400, 250)
+	messageGUI:SetSize(800, 110)
 	messageGUI:Center()
 	messageGUI:MakePopup()
 
