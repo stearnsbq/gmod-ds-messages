@@ -32,3 +32,24 @@ net.Receive("onCloseMessage", function ()
 	end
 
 end)
+
+
+net.Receive("spawnMessageLight", function ()
+
+	local message = net.ReadEntity()
+
+    local dlight = DynamicLight( 1 )
+
+    if ( dlight ) then
+		dlight.pos = message:GetPos() + Vector(0, 0, 0)
+		dlight.r = 203
+		dlight.g = 50
+		dlight.b = 5
+		dlight.brightness = 0.001
+		dlight.Size = 64
+		dlight.DieTime = CurTime() + 1000000
+	end
+
+
+
+end)

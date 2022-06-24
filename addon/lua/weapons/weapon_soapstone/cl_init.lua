@@ -1,7 +1,7 @@
 include("shared.lua")
 
 
-SWEP.PrintName = "White Soapstone"
+SWEP.PrintName = "Orange Guidance Soapstone"
 
 
 SWEP.Slot = 4

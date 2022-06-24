@@ -5,23 +5,31 @@ include("shared.lua")
 
 util.AddNetworkString("onOpenMessage")
 util.AddNetworkString("onCloseMessage")
+util.AddNetworkString("spawnMessageLight")
 
 
 
 function ENT:SetupDataTables()
     self:NetworkVar("String", 0, "Message")
     self:NetworkVar("Int", 1, "Appraisals")
+    self:NetworkVar("Int", 2, "LightIndex")
 end
 
 
 function ENT:Initialize()
-    print(messageMaterial)
+
     self:SetModel("models/hunter/plates/plate1x1.mdl")
     self:SetMaterial("message/dark_souls_message")
     self:PhysicsInit(SOLID_VPHYSICS)
     self:SetMoveType(MOVETYPE_NOCLIP)
     self:SetSolid(SOLID_VPHYSICS)
     self:SetUseType(SIMPLE_USE)
+
+
+    net.Start("spawnMessageLight")
+    net.WriteEntity(self)
+    net.Broadcast()
+
 
     -- self:SetMessage("Default Message")
     -- self:SetAppraisals(0)
@@ -51,7 +59,6 @@ function ENT:StartTouch(caller)
         net.Send(caller)
 
     end
-
 
 
 end

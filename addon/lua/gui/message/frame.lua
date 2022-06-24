@@ -1,12 +1,13 @@
 local PANEL = {}
-local messageMaterial = Material("materials/message/darksouls.png")
+
 function PANEL:Init()
+
 
     self.messageControls = self:Add("Panel")
     self.messageControls:Dock(BOTTOM)
     self.messageControls:SetWidth(25)
     self.messageControls:DockMargin(100, 0, 100, 0)
-    
+
     self.appraiseButton = self.messageControls:Add("DButton")
     self.appraiseButton:SetText("Appraise")
     self.appraiseButton:Dock(RIGHT)
@@ -16,10 +17,11 @@ function PANEL:Init()
 
     self.closeBtn:Dock(LEFT)
 
-
     self.closeBtn.DoClick = function(pn1)
         self:Remove()
     end
+
+    self.messageLabel = self:Add("DLabel")
 
 end
 
@@ -33,10 +35,10 @@ end
 
 function PANEL:Paint(w, h)
 
-
     local aX, aY = self:LocalToScreen()
+    
 
-    draw.RoundedBox(1, aX, aY, 25, 25, Color(232, 228, 240))
+    surface.SetMaterial("materials/message/message.png")
 
 end
 
